@@ -1,0 +1,114 @@
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste
+$ git init
+Initialized empty Git repository in C:/Users/noturno/Documents/git/repoteste/.git/
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (master)
+$ git checkout -b UpandoTeste
+Switched to a new branch 'UpandoTeste'
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git remote
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git remote origin https://github.com/gabrielgfw/exercicios.git
+error: Unknown subcommand: origin
+usage: git remote [-v | --verbose]
+   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
+   or: git remote rename <old> <new>
+   or: git remote remove <name>
+   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+   or: git remote [-v | --verbose] show [-n] <name>
+   or: git remote prune [-n | --dry-run] <name>
+   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
+   or: git remote set-branches [--add] <name> <branch>...
+   or: git remote get-url [--push] [--all] <name>
+   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    -v, --verbose         be verbose; must be placed before a subcommand
+
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git remote add origin https://github.com/gabrielgfw/exercicios.git
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git add arquivosParaUpar/
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git status
+On branch UpandoTeste
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   arquivosParaUpar/ReadMe.txt
+
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git commit -m "Muito louco esse up"
+[UpandoTeste (root-commit) e3b2ae8] Muito louco esse up
+ 1 file changed, 1 insertion(+)
+ create mode 100644 arquivosParaUpar/ReadMe.txt
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ git push -u origin UpandoTeste
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 289 bytes | 144.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'UpandoTeste' on GitHub by visiting:
+remote:      https://github.com/gabrielgfw/exercicios/pull/new/UpandoTeste
+remote:
+To https://github.com/gabrielgfw/exercicios.git
+ * [new branch]      UpandoTeste -> UpandoTeste
+Branch 'UpandoTeste' set up to track remote branch 'UpandoTeste' from 'origin'.
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ ls
+arquivosParaUpar/
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste (UpandoTeste)
+$ cd arquivosParaUpar/
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ ls
+ReadMe.txt
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ git add ReadMe.txt
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ git status
+On branch UpandoTeste
+Your branch is up to date with 'origin/UpandoTeste'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   ReadMe.txt
+
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ git commit -m "update do ReadMe"
+[UpandoTeste 7456616] update do ReadMe
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ git push -u origin UpandoTeste
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Writing objects: 100% (4/4), 321 bytes | 321.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/gabrielgfw/exercicios.git
+   e3b2ae8..7456616  UpandoTeste -> UpandoTeste
+Branch 'UpandoTeste' set up to track remote branch 'UpandoTeste' from 'origin'.
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$ ^C
+
+noturno@PROWAY15 MINGW64 ~/Documents/git/repoteste/arquivosParaUpar (UpandoTeste)
+$
