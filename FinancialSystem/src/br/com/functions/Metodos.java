@@ -16,11 +16,11 @@ public class Metodos {
 	
 	// CONSTRUTOR //	
 	public Metodos(int numeroOperacao,String nomeOperacao, double valorOperacao, String dataOperacao) {
-		this.numeroOperacao  = numeroOperacao;
-		this.nomeOperacao 	   = nomeOperacao;
-		this.valorOperacao	   = valorOperacao;
-		this.dataOperacao 	   = dataOperacao;
-		this.contDeOperacao   += 1;
+		this.numeroOperacao = numeroOperacao;
+		this.nomeOperacao = nomeOperacao;
+		this.valorOperacao = valorOperacao;
+		this.dataOperacao = dataOperacao;
+		this.contDeOperacao += 1;
 	}
 	
 
@@ -65,25 +65,29 @@ public class Metodos {
 	
 	public void Inicio() {
 		
-	    resposta = Teclado.lerTexto("==============================================" + "\n"
-	    						  + "Bem-vindo ao Controle financeiro!" + "\n"
-	    						  + "Digite algumas das opções abaixo:" + "\n"
-	    						  + "Opções: [entrada], [saida], [saldo]" + "\n"
-	    						  + "----------------------------------------------" + "\n"
-	    						  + "Anote o número da operação" + "\n"
-	    						  + "para consulta-las futuramente." + "\n"
-	    						  + "==============================================");
+	    resposta = Teclado.lerTexto(
+	    		"==============================================" + "\n"
+	    	  + "Bem-vindo ao Controle financeiro!" + "\n"
+	    	  + "Digite algumas das opções abaixo:" + "\n"
+	    	  + "Opções: [entrada], [saida], [saldo]" + "\n"
+	    	  + "----------------------------------------------" + "\n"
+	    	  + "Anote o número da operação" + "\n"
+	    	  + "para consulta-las futuramente." + "\n"
+	    	  + "==============================================");
 	 		
 		// FILTRO //
 		if (!(resposta.equalsIgnoreCase("entrada") ||
 			  resposta.equalsIgnoreCase("saida") ||
-			  resposta.equalsIgnoreCase("saldo"))) {
+			  resposta.equalsIgnoreCase("saldo") ||
+			  resposta.equalsIgnoreCase("consulta"))) {
+			
 			System.out.println("Opção inválida:" + "\n" + resposta);
 			System.out.println("Digite novamente algumas das opções abaixo:");
-			System.out.println("Opções: [entrada], [saida], [saldo]" + "\n"
-							 + "----------------------------------------------");
-			System.out.println("para futuras consultas." + "\n"
-							 + "==============================================");
+			System.out.println("Opções: [entrada], [saida], [saldo]");
+			System.out.println("----------------------------------------------");
+			System.out.println("para futuras consultas.");
+			System.out.println("==============================================");
+			
 			resposta = Teclado.lerTexto("");
 		}	
 		
@@ -91,38 +95,42 @@ public class Metodos {
 			this.Entrada();			
 		} else if(resposta.equalsIgnoreCase("saida")) {						
 			this.Saida();			
-		} else {
+		} else if(resposta.equalsIgnoreCase("saldo")){
 			this.Saldo();
+		} else {
+			this.Consulta();
 		}
 		
 	}
 	
 	private void Entrada () {
-				
-		array[contDeOperacao] = new Metodos(contDeOperacao,"", 0, "");
 		
-	    array[contDeOperacao].setnomeOperacao(Teclado.lerTexto("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
-	    								   + "Digite o nome da entrada!" + "\n"
-	    								   + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+		array[contDeOperacao] = new Metodos(contDeOperacao,"", 0, "");
+	    array[contDeOperacao].setnomeOperacao(Teclado.lerTexto(
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
+	    	  + "Digite o nome da entrada!" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
 	    array[contDeOperacao].setvalorOperacao(Teclado.lerDouble(
-	    									 "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n" 
-	    								   + "Digite o valor da sua entrada:" + "\n"
-	    		   						   + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n" 
+	    	  + "Digite o valor da sua entrada:" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
 	    while (array[contDeOperacao].getvalorOperacao() <= 0) {
-	    	System.out.println("----------------------------------------------" + "\n"
-	    					 + "Valor informado é inválido: " + "\n"
-	    					 + array[contDeOperacao].getvalorOperacao());
+	    	System.out.println("----------------------------------------------");
+	    	System.out.println("Valor informado é inválido:");
+	    	System.out.println(array[contDeOperacao].getvalorOperacao());
 	    	
-	    	array[contDeOperacao].setvalorOperacao(Teclado.lerDouble("Digite novamente o valor da sua entrada:" + "\n"
-	    										 + "----------------------------------------------"));
+	    	array[contDeOperacao].setvalorOperacao(Teclado.lerDouble(
+	    			"Digite novamente o valor da sua entrada:" + "\n"
+	    		  + "----------------------------------------------"));
 	    }
 	    	
 	    
-	    array[contDeOperacao].setdataOperacao(Teclado.lerTexto("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
-	    								   + "Diga a data de lançamento (dd/mm/aa)" + "\n"
-	    								   + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+	    array[contDeOperacao].setdataOperacao(Teclado.lerTexto(
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
+	    	  + "Diga a data de lançamento (dd/mm/aa)" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
 	    try {
 		    this.setsubtotalEntrada(array[contDeOperacao].getvalorOperacao());
@@ -131,10 +139,11 @@ public class Metodos {
 			System.out.println("Error: [" + e + "]");
 		}
 	    
-	    System.out.println("==============================================" + "\n"
-				 + "Cadastro realizado!" + "\n"
-				 + "----------------------------------------------" + "\n"
-				 + "Número da operação:");
+	    System.out.println("==============================================");
+	    System.out.println("Cadastro realizado!");
+	    System.out.println("----------------------------------------------");
+	    System.out.println("Número da operação:");
+	    
 		    if(this.getnumeroOperacao() < 99) {
 		    	System.out.println("00" + array[contDeOperacao].getnumeroOperacao());		    
 		    } else {
@@ -156,27 +165,30 @@ public class Metodos {
 		
 		
 		array[contDeOperacao] = new Metodos(contDeOperacao, "", 0, "");
-		
-	    array[contDeOperacao].setnomeOperacao(Teclado.lerTexto("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
-	    				  				   + "Diga o nome da saída sem espaços:" + "\n"
-	    				  				   + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+	    array[contDeOperacao].setnomeOperacao(Teclado.lerTexto(
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
+	    	  + "Diga o nome da saída sem espaços:" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
-	    array[contDeOperacao].setvalorOperacao(Teclado.lerDouble("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
-	    									 + "Diga o valor da sua saída:" + "\n"
-	    									 + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+	    array[contDeOperacao].setvalorOperacao(Teclado.lerDouble(
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
+	    	  + "Diga o valor da sua saída:" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
 		    while (array[contDeOperacao].getvalorOperacao() <= 0) {
-		    	System.out.println("----------------------------------------------" + "\n"
-		    					 + "Valor informado é inválido: " + "\n"
-		    					 + array[contDeOperacao].getvalorOperacao());
+		    	System.out.println("----------------------------------------------");
+		    	System.out.println("Valor informado é inválido: ");
+		    	System.out.println(array[contDeOperacao].getvalorOperacao());
 		    	
-		    	array[contDeOperacao].setvalorOperacao(Teclado.lerDouble("Digite novamente o valor da sua entrada:" + "\n"
-		    														   + "----------------------------------------------"));
+		    	array[contDeOperacao].setvalorOperacao(Teclado.lerDouble(
+		    			"Digite novamente o valor da sua entrada:" + "\n"
+		    		  + "----------------------------------------------"));
 		    }
     
-	    array[contDeOperacao].setdataOperacao(Teclado.lerTexto("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
-	    													 + "Diga a data de lançamento (dd/mm/aa)" + "\n"
-	    													 + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
+	    array[contDeOperacao].setdataOperacao(Teclado.lerTexto(
+	    		"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ " + "\n"
+	    	  + "Diga a data de lançamento (dd/mm/aa)" + "\n"
+	    	  + "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ "));
 	    
 	    try {
 		    this.setsubtotalSaida(array[contDeOperacao].getvalorOperacao());
@@ -185,15 +197,17 @@ public class Metodos {
 			System.out.println("Error: [" + e + "]");
 		}
 	
-	    System.out.println("==============================================" + "\n"
-	    				 + "Cadastro realizado!" + "\n"
-	    				 + "----------------------------------------------" + "\n"
-	    				 + "Número da operação:");
+	    System.out.println("==============================================");
+	    System.out.println("Cadastro realizado!");
+	    System.out.println("----------------------------------------------");
+	    System.out.println("Número da operação:");
+	    
 		    if(this.getnumeroOperacao() < 99) {
 		    	System.out.println("00" + array[contDeOperacao].getnumeroOperacao());		    
 		    } else {
 		    	System.out.println("0" + array[contDeOperacao].getnumeroOperacao());
 		    }
+		    
 		System.out.println("---------------------------------------------");
 	    System.out.println("Nome:     " + array[contDeOperacao].getnomeOperacao());
 	    System.out.println("Valor:    R$ " + array[contDeOperacao].getvalorOperacao());
@@ -219,25 +233,30 @@ public class Metodos {
 	
 	// em desenvolvimento
 
+	public void Teste() {
+		System.out.println(contDeOperacao);
+	}
+	
 	public void Consulta() {
 		
 		int respostaInt;
 		
-		System.out.println("Você está na tela de consultas." + "\n"
-						 + "- - - - - - - - - - - - - - - - - - - - - - -"
-						 + "Estas foram as operações já realizadas: ");
+		System.out.println("Você está na tela de consultas.");
+		System.out.println("- - - - - - - - - - - - - - - - - - - - - - -");
+		System.out.println("Estas foram as operações já realizadas: ");
 		
-			for (int i = 0; i < array.length; i++) {
-				System.out.println("NrOp: " + array[i].getnumeroOperacao() + "\n"
-								  +"nomeOperacao: " + array[i].getnomeOperacao());
-				System.out.println("=-------------------=");
-			}
+		for (int i = 0; i <= contDeOperacao; i++) {
+			System.out.println("NrOp: " + array[i].getnumeroOperacao());
+			System.out.println("nomeOperacao: " + array[i].getnomeOperacao());
+			System.out.println("=-------------------=");
+		}
 			
-			System.out.println(array.length + " operações realizadas.");
+		System.out.println(contDeOperacao + " operações realizadas.");
 		
-		resposta = Teclado.lerTexto("Digite alguma das opções abaixo:" + "\n"
-								  + "[consulta] ou [sair]." + "\n"
-								  + "==============================================");
+		resposta = Teclado.lerTexto(
+				"Digite alguma das opções abaixo:" + "\n"
+			  + "[consulta] ou [sair]." + "\n"
+			  + "==============================================");
 		
 			if (!(resposta.equalsIgnoreCase("sair")) || resposta.equalsIgnoreCase("consulta")) {
 				System.out.println("Opção inválida:" + "\n"
@@ -250,24 +269,26 @@ public class Metodos {
 				
 			} else {
 				respostaInt = Teclado.lerInt("Digite o número da Operação ou [0] para sair.");
+				
 				if (respostaInt == 0) {
 					this.MenuRetorno();
 					
 					// + 1 nesse length porque o valorOperacao da operação é sempre: contDeOperacao(variável) + 1
-				} else if ((respostaInt++) > array.length) {
+				} else if ((respostaInt) > contDeOperacao) {
 					System.out.println("valorOperacao inválido:" + "\n"
 									 + respostaInt);
 					
 					respostaInt = Teclado.lerInt("Digite novamente o número da Operação ou [0] para sair");
 					if (respostaInt == 0) {
 						this.MenuRetorno();
+		
 					} else {
-						System.out.println("==============================================" + "\n"
-										 + "Nr.Op: " + array[respostaInt].getnumeroOperacao() + "\n"
-										 + "nomeOperacao da Operação: " + array[respostaInt].getnomeOperacao() + "\n"
-										 + "valorOperacao da Operação: R$ " + array[respostaInt].getvalorOperacao() + "\n"
-										 + "dataOperacao da Operação: " + array[respostaInt].getdataOperacao() + "\n"
-										 + "==============================================");
+						System.out.println("==============================================");
+						System.out.println("Nr.Op: " + array[respostaInt].getnumeroOperacao());
+						System.out.println("nomeOperacao da Operação: " + array[respostaInt].getnomeOperacao());
+						System.out.println("valorOperacao da Operação: R$ " + array[respostaInt].getvalorOperacao());
+						System.out.println("dataOperacao da Operação: " + array[respostaInt].getdataOperacao());
+						System.out.println("==============================================");
 					}
 					
 				}
