@@ -20,7 +20,6 @@ public class Metodos {
 		this.nomeOperacao = nomeOperacao;
 		this.valorOperacao = valorOperacao;
 		this.dataOperacao = dataOperacao;
-		this.contDeOperacao += 1;
 	}
 	
 
@@ -245,59 +244,62 @@ public class Metodos {
 		System.out.println("- - - - - - - - - - - - - - - - - - - - - - -");
 		System.out.println("Estas foram as operações já realizadas: ");
 		
-		for (int i = 0; i <= contDeOperacao; i++) {
-			System.out.println("NrOp: " + array[i].getnumeroOperacao());
-			System.out.println("nomeOperacao: " + array[i].getnomeOperacao());
-			System.out.println("=-------------------=");
+		if(contDeOperacao == 0) {
+			System.out.println("Nenhuma operação realizada!");
+			this.MenuRetorno();
+			
+		} else {
+			for (int i = 0; i < contDeOperacao; i++) {
+				System.out.println("NrOp: " + array[i].getnumeroOperacao());
+				System.out.println("nomeOperacao: " + array[i].getnomeOperacao());
+				System.out.println("=-------------------=");
+			}
 		}
 			
-		System.out.println(contDeOperacao + " operações realizadas.");
-		
+		System.out.println(contDeOperacao + " operações realizadas.");		
 		resposta = Teclado.lerTexto(
 				"Digite alguma das opções abaixo:" + "\n"
-			  + "[consulta] ou [sair]." + "\n"
+			  + "[consultar op] ou [sair]." + "\n"
 			  + "==============================================");
 		
-			if (!(resposta.equalsIgnoreCase("sair")) || resposta.equalsIgnoreCase("consulta")) {
-				System.out.println("Opção inválida:" + "\n"
-								 + resposta);
-				resposta = Teclado.lerTexto("Digite novamente alguma opção abaixo:" + "\n"
-										  + "[consulta] ou [sair].");
-				
-			} else if (resposta.equalsIgnoreCase("sair")) {
+		if (!(resposta.equalsIgnoreCase("sair")) || resposta.equalsIgnoreCase("consultar op")) {
+			System.out.println("Opção inválida:" + "\n"
+							 + resposta);
+			resposta = Teclado.lerTexto("Digite novamente alguma opção abaixo:" + "\n"
+									  + "[consultar op] ou [sair].");
+			
+		} else if (resposta.equalsIgnoreCase("sair")) {
+			this.MenuRetorno();
+			
+		} else {
+			respostaInt = Teclado.lerInt("Digite o número da Operação ou [0] para sair.");
+			
+			if (respostaInt == 0) {
 				this.MenuRetorno();
 				
-			} else {
-				respostaInt = Teclado.lerInt("Digite o número da Operação ou [0] para sair.");
+				// + 1 nesse length porque o valorOperacao da operação é sempre: contDeOperacao(variável) + 1
+			} else if ((respostaInt) > contDeOperacao) {
+				System.out.println("valorOperacao inválido:" + "\n"
+								 + respostaInt);
 				
+				respostaInt = Teclado.lerInt("Digite novamente o número da Operação ou [0] para sair");
 				if (respostaInt == 0) {
 					this.MenuRetorno();
-					
-					// + 1 nesse length porque o valorOperacao da operação é sempre: contDeOperacao(variável) + 1
-				} else if ((respostaInt) > contDeOperacao) {
-					System.out.println("valorOperacao inválido:" + "\n"
-									 + respostaInt);
-					
-					respostaInt = Teclado.lerInt("Digite novamente o número da Operação ou [0] para sair");
-					if (respostaInt == 0) {
-						this.MenuRetorno();
-		
-					} else {
-						System.out.println("==============================================");
-						System.out.println("Nr.Op: " + array[respostaInt].getnumeroOperacao());
-						System.out.println("nomeOperacao da Operação: " + array[respostaInt].getnomeOperacao());
-						System.out.println("valorOperacao da Operação: R$ " + array[respostaInt].getvalorOperacao());
-						System.out.println("dataOperacao da Operação: " + array[respostaInt].getdataOperacao());
-						System.out.println("==============================================");
-					}
-					
+	
+				} else {
+					System.out.println("==============================================");
+					System.out.println("Nr.Op: " + array[respostaInt].getnumeroOperacao());
+					System.out.println("nomeOperacao da Operação: " + array[respostaInt].getnomeOperacao());
+					System.out.println("valorOperacao da Operação: R$ " + array[respostaInt].getvalorOperacao());
+					System.out.println("dataOperacao da Operação: " + array[respostaInt].getdataOperacao());
+					System.out.println("==============================================");
 				}
 				
 			}
-			System.out.println("=-- - - - --="
-							 + "Retornando ao menu!" + "\n"
-							 + "=-- - - - --=");
-			this.MenuRetorno(); 
+			
+		}
+		System.out.println("=-- - - - --=" + "Retornando ao menu!" + "\n" + "=-- - - - --=");
+		this.MenuRetorno();
 	}
 	
 	private void MenuRetorno() {
@@ -305,25 +307,22 @@ public class Metodos {
 		resposta = Teclado.lerTexto("Digite algumas das opções abaixo:" + "\n"
 								  + "Opções: [entrada], [saida], [saldo]" + "\n"
 								  + "==============================================");
-		
-		// FILTRO		
-		if (!(resposta.equalsIgnoreCase("entrada") ||
-			  resposta.equalsIgnoreCase("saida") ||
-			  resposta.equalsIgnoreCase("saldo"))) {			
+		// FILTRO
+		if (!(resposta.equalsIgnoreCase("entrada") || resposta.equalsIgnoreCase("saida") ||
+			  resposta.equalsIgnoreCase("saldo") || resposta.equalsIgnoreCase("consulta"))) {
 		    System.out.println("- - - - - - - - - - - - - - - - - - - - - - -");
-		    System.out.println("- - - - - - - - - - - - - - - - - - - - - - -");		    
 			resposta = Teclado.lerTexto("Digite algumas das opções abaixo:" + "\n"
 									  + "Opções: [entrada], [saida], [saldo]");
 		}
-	
-		if(resposta.equalsIgnoreCase("entrada")) {			
-			this.Entrada();			
-		}
-		
-		if(resposta.equalsIgnoreCase("saida")) {						
+
+		if(resposta.equalsIgnoreCase("entrada")) {
+			this.Entrada();
+		} else if(resposta.equalsIgnoreCase("saida")) {
 			this.Saida();
-		} else {
+		} else if (resposta.equalsIgnoreCase("saldo")){
 			this.Saldo();
+		} else {
+			this.Consulta();
 		}
-	}	
+	}
 }
