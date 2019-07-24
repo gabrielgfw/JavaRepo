@@ -4,6 +4,6 @@ public class ContaBanco {
 		
 	int numeroConta;
 	double saldoConta;
-	double limiteConta;
+	double limiteConta = 100.0; // limite inicial
 
 }
