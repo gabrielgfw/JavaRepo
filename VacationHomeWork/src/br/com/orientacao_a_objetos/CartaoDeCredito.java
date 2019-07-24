@@ -5,6 +5,7 @@ public class CartaoDeCredito {
 	
 	int numeroCartao;
 	String dataValidade;
+	Cliente clienteCartao;
 	
 	
 }

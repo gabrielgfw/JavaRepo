@@ -5,6 +5,7 @@ public class Aluno {
 	String nomeAluno;
 	int rgAluno;
 	String dtNascimentoAluno;
+	Turma turmaAluno;
 	
 	
 }
