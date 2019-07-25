@@ -1,14 +1,42 @@
 package br.com.orientacao_a_objetos;
 
+import java.util.Random;
+
 public class ContaBanco {
 		
 	int numeroConta;
 	double saldoConta;
 	double limiteConta = 100.0; // limite inicial
 	AgenciaBanco agenciaConta;
+	static int contador;
+	int memoryContador;
+	int backupContador;
 	
-	public ContaBanco(int nrConta) {
-		this.numeroConta = nrConta;
+	Random random = new Random();
+	
+	public ContaBanco() {
+		if(contador < memoryContador) {
+			contador++;
+			memoryContador = contador;
+			this.numeroConta = contador;
+		} else {
+			contador++;
+			backupContador = memoryContador;
+			memoryContador = contador;
+			backupContador++;
+			this.numeroConta = backupContador;
+		}
+
+	}
+	
+	public void zerarContador() {
+		memoryContador = contador;
+		contador = 0;
+		System.out.println("-------------------");
+		System.out.println("Contador zerado!");
+		System.out.println("-------------------");
+		System.out.println("Contas criadas anteriormente: " + memoryContador);
+		System.out.println("-------------------");
 	}
 	
 	public void setDeposito(double valorDeposito) {
