@@ -4,16 +4,14 @@ public class TesteCartaoDeCredito {
 
 	public static void main(String[] args) {
 
-		CartaoDeCredito newCartao01 = new CartaoDeCredito();
+		CartaoDeCredito newCartao01 = new CartaoDeCredito(1230912903);
 		newCartao01.dataValidade = "10/19";
-		newCartao01.numeroCartao = 1230912903;
 		newCartao01.clienteCartao = new Cliente();
 		newCartao01.clienteCartao.nomeCliente = "Robeswaldo";
 		newCartao01.clienteCartao.codigoCliente = 123123;
 		
-		CartaoDeCredito newCartao02 = new CartaoDeCredito();
+		CartaoDeCredito newCartao02 = new CartaoDeCredito(1234212923);
 		newCartao02.dataValidade = "11/22";
-		newCartao02.numeroCartao = 1234212923;
 		newCartao02.clienteCartao = new Cliente();
 		newCartao02.clienteCartao.nomeCliente = "Amandinus";
 		newCartao02.clienteCartao.codigoCliente = 321321321;

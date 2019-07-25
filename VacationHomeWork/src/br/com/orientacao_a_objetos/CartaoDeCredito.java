@@ -7,5 +7,9 @@ public class CartaoDeCredito {
 	String dataValidade;
 	Cliente clienteCartao;
 	
+	public CartaoDeCredito (int nrCartao) {
+		this.numeroCartao = nrCartao;
+	}
+	
 	
 }

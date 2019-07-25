@@ -7,6 +7,9 @@ public class ContaBanco {
 	double limiteConta = 100.0; // limite inicial
 	AgenciaBanco agenciaConta;
 	
+	public ContaBanco(int nrConta) {
+		this.numeroConta = nrConta;
+	}
 	
 	public void setDeposito(double valorDeposito) {
 		this.saldoConta += valorDeposito;
@@ -31,4 +34,10 @@ public class ContaBanco {
 		System.out.println("======================");
 	}
 	
+	public void transferencia(double valor, ContaBanco contaB) {
+		this.saldoConta -= valor;
+		contaB.saldoConta += valor;
+		System.out.println("Transferência bem sucedida!");
+		System.out.println("Valor transferido: R$" + valor);
+	}
 }
