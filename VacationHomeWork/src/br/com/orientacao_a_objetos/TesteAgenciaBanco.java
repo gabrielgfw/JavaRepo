@@ -9,9 +9,9 @@ public class TesteAgenciaBanco {
 		
 		AgenciaBanco newAgencia02 = new AgenciaBanco(30);
 		
-		System.out.println("Numero da agência: " + newAgencia01.numeroAgencia);
+		System.out.println("Numero da agência: " + newAgencia01.getNumeroAgencia());
 		System.out.println("-------------------------------------------------");
-		System.out.println("Numero da agência: " + newAgencia02.numeroAgencia);
+		System.out.println("Numero da agência: " + newAgencia02.getNumeroAgencia());
 
 	}
 

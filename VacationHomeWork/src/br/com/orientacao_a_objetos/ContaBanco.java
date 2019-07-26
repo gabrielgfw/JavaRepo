@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class ContaBanco {
 		
-	int numeroConta;
-	double saldoConta;
-	double limiteConta = 100.0; // limite inicial
-	AgenciaBanco agenciaConta;
+	private int numeroConta;
+	private double saldoConta;
+	private double limiteConta = 100.0; // limite inicial
+	private AgenciaBanco agenciaConta;
 	static int contador;
-	int memoryContador;
-	int backupContador;
+	private int memoryContador;
+	private int backupContador;
 	
 	Random random = new Random();
 	
@@ -26,7 +26,70 @@ public class ContaBanco {
 			backupContador++;
 			this.numeroConta = backupContador;
 		}
+	}
+	
+	public int getNumeroConta() {
+		return numeroConta;
+	}
 
+	public void setNumeroConta(int numeroConta) {
+		this.numeroConta = numeroConta;
+	}
+
+	public double getSaldoConta() {
+		return saldoConta;
+	}
+
+	public void setSaldoConta(double saldoConta) {
+		this.saldoConta = saldoConta;
+	}
+
+	public double getLimiteConta() {
+		return limiteConta;
+	}
+
+	public void setLimiteConta(double limiteConta) {
+		this.limiteConta = limiteConta;
+	}
+
+	public AgenciaBanco getAgenciaConta() {
+		return agenciaConta;
+	}
+
+	public void setAgenciaConta(AgenciaBanco agenciaConta) {
+		this.agenciaConta = agenciaConta;
+	}
+
+	public static int getContador() {
+		return contador;
+	}
+
+	public static void setContador(int contador) {
+		ContaBanco.contador = contador;
+	}
+
+	public int getMemoryContador() {
+		return memoryContador;
+	}
+
+	public void setMemoryContador(int memoryContador) {
+		this.memoryContador = memoryContador;
+	}
+
+	public int getBackupContador() {
+		return backupContador;
+	}
+
+	public void setBackupContador(int backupContador) {
+		this.backupContador = backupContador;
+	}
+
+	public Random getRandom() {
+		return random;
+	}
+
+	public void setRandom(Random random) {
+		this.random = random;
 	}
 	
 	public void zerarContador() {
@@ -55,10 +118,10 @@ public class ContaBanco {
 		System.out.println("======================");
 		System.out.println("Extrato Conta");
 		System.out.println("----------------------");
-		System.out.println("Número Conta: " + this.numeroConta);
-		System.out.println("Saldo Conta: R$ " + this.saldoConta);
-		System.out.println("Limite Conta: R$ " + this.limiteConta);
-		System.out.println("Agencia Banco: " + this.agenciaConta.numeroAgencia);
+		System.out.println("Número Conta: " + this.getNumeroConta());
+		System.out.println("Saldo Conta: R$ " + this.getSaldoConta());
+		System.out.println("Limite Conta: R$ " + this.getLimiteConta());
+		System.out.println("Agencia Banco: " + this.agenciaConta.getNumeroAgencia());
 		System.out.println("======================");
 	}
 	
@@ -68,4 +131,6 @@ public class ContaBanco {
 		System.out.println("Transferência bem sucedida!");
 		System.out.println("Valor transferido: R$" + valor);
 	}
+	
+	
 }
