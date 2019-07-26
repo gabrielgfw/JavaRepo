@@ -23,6 +23,15 @@ public class TesteFuncionario3 {
 		ten01.setValeRefeicaoDiario(14.05);
 		ten01.setCodigoEstacao(32);
 
+		gen01.getInfo();
+		sen01.getInfo();
+		ten01.getInfo();
+		
+		gen01.setReajusteSalariaPadrao();
+		sen01.setReajusteSalariaPadrao();
+		ten01.setReajusteSalariaPadrao();
+		
+		
 	}
 
 }

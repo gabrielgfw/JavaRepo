@@ -7,6 +7,32 @@ public class Gerente extends Funcionario {
 	public void setPassword(String password) {
 		this.senhaGerente = password;
 	}
+	
+	public String getSenhaGerente() {
+		return this.senhaGerente;
+	}
+	
+	@Override
+	public void setReajusteSalariaPadrao() {
+		System.out.println("Reajuste salarial 20%!");
+		System.out.println("-----------------------------------");
+		System.out.println("Salário atual: R$ " + this.getSalarioFuncionario());
+		this.salarioFuncionario += (this.getSalarioFuncionario() * 0.2); // 10% reajuste
+		System.out.println("Salário reajustado: R$ " + this.getSalarioFuncionario());
+		System.out.println(":D Uhulll!! aumento!!");
+		System.out.println("-----------------------------------");
+	}
+	
+	@Override
+	public void getInfo() {
+		System.out.println("Informações Funcionário!");
+		System.out.println("------------------------------------------------------");
+		System.out.println("Nome Funcionário: " + this.getNomeFuncionario());
+		System.out.println("Salário Funcionário: R$ " + this.getSalarioFuncionario());
+		System.out.println("Bonificação Salarial: " + "20%");
+		System.out.println("Senha Gerente: (não fala pra ninguém por favor!) " + this.getSenhaGerente());
+		System.out.println("------------------------------------------------------");
+	}
 
 	public void setAumentoPadrao() {
 		System.out.println("Aumento Salarial padrão de 10%!");

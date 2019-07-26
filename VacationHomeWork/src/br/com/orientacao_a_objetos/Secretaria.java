@@ -12,5 +12,16 @@ public class Secretaria extends Funcionario{
 		this.ramalSecretaria = ramalSecretaria;
 	}
 	
+	@Override
+	public void getInfo() {
+		System.out.println("Informações Funcionário!");
+		System.out.println("------------------------------------------------------");
+		System.out.println("Nome Funcionário: " + this.getNomeFuncionario());
+		System.out.println("Salário Funcionário: R$ " + this.getSalarioFuncionario());
+		System.out.println("Ramal: " + this.getRamalSecretaria());
+		System.out.println("Bonificação Salarial: " + "10%");
+		System.out.println("------------------------------------------------------");
+	}
+	
 	
 }

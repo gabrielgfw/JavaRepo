@@ -55,6 +55,7 @@ public class Funcionario {
 		System.out.println("------------------------------------------------------");
 		System.out.println("Nome Funcionário: " + this.getNomeFuncionario());
 		System.out.println("Salário Funcionário: R$ " + this.getSalarioFuncionario());
+		System.out.println("Bonificação Salarial: " + "10%");
 		System.out.println("------------------------------------------------------");
 	}
 	
@@ -65,6 +66,16 @@ public class Funcionario {
 		this.valeRefeicaoDiario += (this.getValeRefeicaoDiario() * taxaReajusteVR);
 		System.out.println("Vale Refeição ajustado: R$ " + this.getValeRefeicaoDiario());
 		System.out.println("----------------------------------");
+	}
+	
+	public void setReajusteSalariaPadrao() {
+		System.out.println("Reajuste salarial 10%!");
+		System.out.println("-----------------------------------");
+		System.out.println("Salário atual: R$ " + this.getSalarioFuncionario());
+		this.salarioFuncionario += (this.getSalarioFuncionario() * 0.1); // 10% reajuste
+		System.out.println("Salário reajustado: R$ " + this.getSalarioFuncionario());
+		System.out.println(":D Uhulll!! aumento!!");
+		System.out.println("-----------------------------------");
 	}
 	
 }
